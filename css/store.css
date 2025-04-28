@@ -1,0 +1,189 @@
+.product-detail {
+    width: 80%;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+/* .product-header {
+    display: flex;
+} */
+
+.main-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.product-info {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.price {
+    font-size: 2rem;
+    color: var(--az-red);
+    margin: 1rem 0;
+}
+
+.description {
+    margin-top: 2rem;
+}
+
+.description ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.other-products {
+    width: 80%;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+.other-product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.other-product-card {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.other-image {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.other-product-card a {
+    text-decoration: none;
+}
+
+.other-product-card a:hover {
+    text-decoration: underline black;
+}
+
+.comments-section {
+    width: 80%;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+.comment-input {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+}
+
+.comment-input-area {
+    flex: 1;
+    padding: 0.5rem;
+    margin-right: 1rem;
+}
+
+.comment-input-area textarea {
+    font-family: Arial, sans-serif;
+    width: 100%;
+    height: 100px;
+    border-radius: 4px;
+    padding: 0.5rem;
+    resize: none;
+}
+
+.comment-input .comment-btn {
+    width: 100%;
+    background-color: var(--az-blue);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.comment-card {
+    display: grid;
+    grid-template-areas: 
+    'avatar header'
+    'avatar text';
+    grid-template-columns: auto 1fr;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+}
+
+.user-avatar {
+    grid-area: avatar;
+    width: 50px;
+    height: 50px;
+    margin: 0.5rem;
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+.comment-card-header {
+    grid-area: header;
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    column-gap: 1rem;
+    align-items: center;
+}
+
+.comment-card-header .user-name {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.comment-card-header .comment-date {
+    font-size: 0.8rem;
+    color: gray;
+}
+
+.comment-text {
+    grid-area: text;
+    margin: 0.5rem;
+    margin-top: 1rem;
+}
+
+@media (max-width: 800px) {
+    .product-detail {
+        grid-template-columns: 1fr;
+        width: 90%;
+    }
+
+    .other-products {
+        width: 90%;
+    }
+
+    .comments-section {
+        width: 90%;
+    }
+
+    .user-avatar {
+        width: 40px;
+        height: 40px;
+        margin: 0.5rem;
+        border-radius: 50%;
+        margin-right: 1rem;
+    }
+
+    .comment-input-area {
+        margin-right: 0;
+    }
+}

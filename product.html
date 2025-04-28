@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UA Campus Store | Products</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/store.css">
+    <link rel="stylesheet" href="css/utility-styles.css">
+    <link rel="stylesheet" href="css/api-info.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <script src="scripts/product_comment.js"></script>
+    <script src="scripts/api_handlers.js"></script>
+</head>
+<body>
+<nav class="nav-container">
+        <a href="#" class="hamburger-menu">
+            <i class="fas fa-bars"></i>
+        </a>
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="UA Campus Store Logo">
+        </a>
+        <div class="nav-links">
+            <div class="nav-logo">
+                <a href="search.html"><i class="fas fa-search"></i></a>
+                <span class="tooltip">Search Products</span>
+            </div>
+            <div class="nav-logo">
+                <a href="#"><i class="fas fa-user"></i></a>
+                <span class="tooltip">Account</span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Product detail section uses a two-column layout (images and info) for optimal viewing
+            on desktop screens while maintaining readability and easy scanning of product information.
+            This follows e-commerce best practices for product pages. -->
+        <section class="product-detail">
+        </section>
+
+        <section class="comments-section">
+            <h2>Reviews and Comments:</h2>
+            <div class="comment-input">
+                <img src="images/user.png" alt="User Avatar" class="user-avatar">
+                <div class="comment-input-area">
+                    <textarea id="comment" placeholder="Leave a comment..."></textarea>
+                    <button onclick="postComment()" id="submit-comment" class="comment-btn">POST</button>
+                </div>
+            </div>
+            <div class="comments-list">
+            </div>            
+        </section>
+
+        <!-- Related products section uses a grid layout to display multiple items efficiently.
+            Limited to 6 items to avoid overwhelming the user while providing enough options
+            to encourage additional purchases and browsing. -->
+        <section class="other-products">
+            <h2>Other Products You Might Like:</h2>
+            <div class="other-product-grid">
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">Terms of Use</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">About</a>
+            <a href="#">Help Center</a>
+        </div>
+        <div class="footer-copyright">
+            <p>© 2025 The University of Arizona Campus Store. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

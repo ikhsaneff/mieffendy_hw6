@@ -1,0 +1,62 @@
+.weather-info {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.weather-info h3 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.weather-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.pokemon-image {
+    width: 32px; 
+    height: 32px;
+    margin-left: 1%; 
+}
+
+.weather-icon {
+    width: 80px;
+    height: 80px;
+}
+
+.weather-details p {
+    margin-bottom: 0.5rem;
+}
+
+.temperature {
+    /* font-size: 1.2rem; */
+    font-weight: bold;
+    color: var(--az-red);
+}
+
+.condition {
+    text-transform: capitalize;
+}
+
+.shipping-status {
+    font-style: italic;
+    padding-top: 0.5rem;
+    border-top: 1px solid #eee;
+}
+
+@media (max-width: 800px) {
+    .api-info-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .weather-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .weather-details {
+        margin-top: 1rem;
+    }
+}
