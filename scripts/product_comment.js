@@ -1,55 +1,79 @@
 document.addEventListener("DOMContentLoaded", function () {
-    displayComments()
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
+    
+    loadReviews(productId);
 })
 
-function postComment() {
-    let commentText = document.getElementById("comment").value;
-    let currentCommentData = JSON.parse(localStorage.getItem("commentData")) || [];
+function loadReviews(productId) {
+    fetch(`/api/productdata.php?id=${productId}`)
+        .then(response => response.json())
+        .then(productData => {
+            if (!productData.reviews || productData.reviews.length === 0) {
+                document.querySelector('.reviews-list').innerHTML = `
+                    <p class="no-reviews">No reviews yet. Be the first to leave a review!</p>
+                `;
+                return;
+            }
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const productId = urlParams.get('id');
+            let html = '';
+            productData.reviews.forEach(review => {
+                html += `
+                    <div class="review-card">
+                        <img src="images/user.png" alt="User Avatar" class="user-avatar">
+                        <div class="review-card-content">
+                            <div class="review-card-header">
+                                <p class="user-name">${review.user_name || 'John Doe'}</p>
+                                <p class="review-date">${review.created_at}</p>
+                            </div>
+                            <p class="review-text">${review.review}</p>
+                        </div>
+                    </div>
+                `;
+            });
 
-    const today = new Date();
-    const formattedDate = today.toLocaleDateString("en-US");
-
-    commentData = {
-        productId: productId,
-        comment: commentText,
-        date: formattedDate
-    };
-
-    currentCommentData.push(commentData);
-    localStorage.setItem("commentData", JSON.stringify(currentCommentData));
-
-    displayComments()
+            document.querySelector('.reviews-list').innerHTML = html;
+        })
+        .catch(error => {
+            console.error('Error loading reviews:', error);
+            document.querySelector('.reviews-list').innerHTML = `
+                <p class="error-message">Failed to load reviews. Please try again later.</p>
+            `;
+        });
 }
 
-function displayComments() {
-    let commentSection = document.querySelector(".comments-list")
-    let currentCommentData = JSON.parse(localStorage.getItem("commentData")) || [];
-    let resultHTML = "";
+function postReview() {
+    const reviewText = document.getElementById('review').value;
+    if (!reviewText.trim()) {
+        alert('Please enter a review');
+        return;
+    }
 
     const urlParams = new URLSearchParams(window.location.search);
     const productId = urlParams.get('id');
+    const today = new Date();
 
-    currentCommentData.forEach(data => {
-        if (data.productId === productId) {
-            resultHTML += `
-                <div class="comment-card">
-                    <img src="images/user.png" alt="User Avatar" class="user-avatar">
-                    <div class="comment-card-content">
-                        <div class="comment-card-header">
-                            <p class="user-name">John Doe</p>
-                            <p class="comment-date">${data.date}</p>
-                        </div>
-                        <p class="comment-text">${data.comment}</p>
-                    </div>
-                </div>
-            `;  
-        }
-       
+    fetch('/api/productdata.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            productId: productId,
+            review: reviewText,
+        })
     })
-
-    commentSection.innerHTML = resultHTML;
-    document.getElementById("comment").value = "";
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                loadReviews(productId);
+                document.getElementById('review').value = '';
+            } else {
+                alert('Failed to post review: ' + (data.error || 'Unknown error'));
+            }
+        })
+        .catch(error => {
+            console.error('Error posting review:', error);
+            alert('An error occurred while posting your review');
+        });
 }

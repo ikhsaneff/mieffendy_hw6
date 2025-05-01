@@ -11,18 +11,20 @@ function loadAllDataAndDisplay() {
         if (featuredProductElement) {
             featuredProductElement.innerHTML = displayProducts(products);
         }
+
+        const newProductsList = document.querySelector("#new-products-list");
+        if (newProductsList) {
+
+            const newProducts = [...products].sort((a, b) => b.id - a.id).slice(0, 4);
+            if (newProducts.length > 0) {
+                document.querySelector(".new-products").style.display = "block";
+                newProductsList.innerHTML = displayProducts(newProducts);
+            }
+        }
     })
     .catch(error => console.error(error));
 }
 
 addEventListener("DOMContentLoaded", function () {
-    if (!localStorage.getItem("productData") || !localStorage.getItem("imageData")) {
-        loadAllDataAndDisplay();
-    } else {
-        const featuredProductElement = document.querySelector("#featured-products-list");
-        const productData = JSON.parse(localStorage.getItem("productData"));
-        if (featuredProductElement && productData.length > 0) {
-            featuredProductElement.innerHTML = displayProducts(productData);
-        }
-    }
+    loadAllDataAndDisplay();
 });

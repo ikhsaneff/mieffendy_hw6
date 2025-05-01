@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UA Campus Store | Products</title>
+    <title>UA Campus Store | Product Details</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/store.css">
     <link rel="stylesheet" href="css/utility-styles.css">
     <link rel="stylesheet" href="css/api-info.css">
+    <link rel="stylesheet" href="css/review.css">
+    <link rel="stylesheet" href="css/cart.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-    <script src="scripts/product_comment.js"></script>
+    <script src="scripts/product_review.js"></script>
     <script src="scripts/api_handlers.js"></script>
 </head>
 <body>
@@ -27,6 +29,10 @@
                 <span class="tooltip">Search Products</span>
             </div>
             <div class="nav-logo">
+                <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                <span class="tooltip">Shopping Cart</span>
+            </div>
+            <div class="nav-logo">
                 <a href="#"><i class="fas fa-user"></i></a>
                 <span class="tooltip">Account</span>
             </div>
@@ -38,28 +44,47 @@
             on desktop screens while maintaining readability and easy scanning of product information.
             This follows e-commerce best practices for product pages. -->
         <section class="product-detail">
+            <div class="loading-spinner">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>Loading product details...</p>
+            </div>
         </section>
-
-        <section class="comments-section">
-            <h2>Reviews and Comments:</h2>
-            <div class="comment-input">
-                <img src="images/user.png" alt="User Avatar" class="user-avatar">
-                <div class="comment-input-area">
-                    <textarea id="comment" placeholder="Leave a comment..."></textarea>
-                    <button onclick="postComment()" id="submit-comment" class="comment-btn">POST</button>
+        <div class="add-to-cart-container">
+            <div class="quantity-selector">
+                <div class="quantity-controls">
+                    <button id="decrease-qty" class="quantity-btn">-</button>
+                    <input type="number" id="quantity" value="1" min="1" max="99">
+                    <button id="increase-qty" class="quantity-btn">+</button>
                 </div>
             </div>
-            <div class="comments-list">
-            </div>            
-        </section>
+            <button id="add-to-cart-btn" class="add-to-cart-btn">
+                <i class="fas fa-shopping-cart"></i> Add to Cart
+            </button>
+        </div>
 
         <!-- Related products section uses a grid layout to display multiple items efficiently.
-            Limited to 6 items to avoid overwhelming the user while providing enough options
-            to encourage additional purchases and browsing. -->
+        Shows recommended products based on categories or similarities to current product. -->
         <section class="other-products">
-            <h2>Other Products You Might Like:</h2>
+            <h2>Recommended Products:</h2>
             <div class="other-product-grid">
+                <div class="loading-spinner">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Loading recommendations...</p>
+                </div>
             </div>
+        </section>
+
+        <section class="reviews-section">
+            <h2>Reviews:</h2>
+            <div class="review-input">
+                <img src="images/user.png" alt="User Avatar" class="user-avatar">
+                <div class="review-input-area">
+                    <textarea id="review" placeholder="Leave a review..."></textarea>
+                    <button onclick="postReview()" id="submit-review" class="review-btn">POST</button>
+                </div>
+            </div>
+            <div class="reviews-list">
+            </div>            
         </section>
     </main>
 
@@ -74,5 +99,13 @@
             <p>© 2025 The University of Arizona Campus Store. All Rights Reserved.</p>
         </div>
     </footer>
+    
+    <div class="notification" id="cart-notification">
+        <i class="fas fa-check-circle"></i>
+        <p>Item added to cart!</p>
+    </div>
+    
+    <script src="scripts/loadDatas.js"></script>
+    <script src="scripts/product_detail.js"></script>
 </body>
 </html>

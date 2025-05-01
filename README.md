@@ -8,13 +8,13 @@ This project is an update of the UA Campus Store website remake with additional 
 - Hero section with a featured image
 - Featured products section displaying popular items
 - Footer with additional links
-- Dynamically loaded search results from .csv files
 - Search result sorting
-- Add comment to product posting
+- Add review to product posting
 - Add new products
 - [NEW!] Integration with PokéAPI for little Pokémon emoji in product title
 - [NEW!] Integration with OpenWeather API for shipping location weather
 - [NEW!] Custom API to serve product data
+- Dynamically loaded search results from database
 
 ## Getting Started
 

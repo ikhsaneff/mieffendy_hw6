@@ -1,3 +1,5 @@
+/* css/style.css */
+
 :root {
     --az-blue: #0C234B;
     --az-red: #AB0520;
@@ -102,9 +104,24 @@ nav {
     display: flex;
     flex-direction: column;
     text-align: center;
-    align-items: flex;
+    align-items: center;
     justify-content: center;
-    height: 72vh;
+    gap: 1rem;
+    height: 50vh;
+}
+
+.not-found a {
+    text-decoration: none;
+}
+
+.error-message, .no-reviews {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 2rem auto;
 }
 
 main {
@@ -139,7 +156,6 @@ main {
     grid-template-columns: repeat(auto-fit, minmax(250px, 300px));
     gap: 2rem;
     margin-top: 2rem;
-    justify-items: self-start;
     justify-content: center;
 }
 
@@ -163,6 +179,46 @@ main {
 
 .product-card a:hover {
     text-decoration: underline;
+}
+
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 4px;
+    display: none;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    animation: slide-in 0.3s ease-out;
+    background-color: white;
+}
+
+.notification.success {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.notification.error {
+    background-color: #f44336;
+    color: white;
+}
+
+.notification i {
+    font-size: 1.5rem;
+}
+
+@keyframes slide-in {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
 footer {

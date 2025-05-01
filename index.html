@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/utility-styles.css">
     <link rel="stylesheet" href="css/popup-form.css">
+    <link rel="stylesheet" href="css/cart.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
 </head>
@@ -16,17 +17,21 @@
         <a href="#" class="hamburger-menu">
             <i class="fas fa-bars"></i>
         </a>
-        <a href="index.php" class="logo">
+        <a href="index.html" class="logo">
             <img src="images/logo.png" alt="UA Campus Store Logo">
         </a>
         <div class="nav-links">
             <div class="nav-logo">
-                <button onclick=openForm()><i class="fas fa-square-plus"></i></button>
+                <button onclick="openForm()"><i class="fas fa-square-plus"></i></button>
                 <span class="tooltip">Add New Product</span>
             </div>
             <div class="nav-logo">
                 <a href="search.html"><i class="fas fa-search"></i></a>
                 <span class="tooltip">Search Products</span>
+            </div>
+            <div class="nav-logo">
+                <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                <span class="tooltip">Shopping Cart</span>
             </div>
             <div class="nav-logo">
                 <a href="#"><i class="fas fa-user"></i></a>
@@ -39,10 +44,11 @@
         <div class="form-box">
             <div class="form-header">
                 <h3>Add New Product</h3>
-                <button><i class="fas fa-times close-button" onclick=closeForm()></i></button>
+                <button><i class="fas fa-times close-button" onclick="closeForm()"></i></button>
             </div>
             <div class="form-body">
                 <form id="the-real-add-product-form">
+                    <input type="hidden" name="csrf_token" id="csrf_token" value="<?php echo generateCSRFToken(); ?>">
                     <label for="product-name">Product Name</label>
                     <input type="text" name="product-name" id="product-name" placeholder="Type the product name..." required>
                     <label for="product-price">Price</label>
@@ -74,6 +80,10 @@
         <section class="featured-products">
             <h2>Featured Products</h2>
             <div class="product-grid" id="featured-products-list">
+                <div class="loading-spinner">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Loading products...</p>
+                </div>
             </div>
         </section>
     </main>

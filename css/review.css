@@ -1,0 +1,135 @@
+/* .star-rating {
+    display: flex;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+
+.star {
+    font-size: 24px;
+    color: #ccc;
+    transition: color 0.2s;
+}
+
+.star.selected,
+.star:hover,
+.star:hover ~ .star {
+    color: gold;
+} */
+
+.reviews-section {
+    width: 80%;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+.review-input {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+}
+
+.review-input-area {
+    flex: 1;
+    padding: 0.5rem;
+    margin-right: 1rem;
+}
+
+.review-input-area textarea {
+    font-family: Arial, sans-serif;
+    width: 100%;
+    height: 100px;
+    border-radius: 4px;
+    padding: 0.5rem;
+    resize: none;
+}
+
+.review-input .review-btn {
+    width: 100%;
+    background-color: var(--az-blue);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.review-card {
+    display: grid;
+    grid-template-areas: 
+    'avatar header'
+    'avatar text';
+    grid-template-columns: auto 1fr;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+}
+
+.user-avatar {
+    grid-area: avatar;
+    width: 50px;
+    height: 50px;
+    margin: 0.5rem;
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+.review-card-header {
+    grid-area: header;
+    display: flex;
+    flex-direction: row;
+    column-gap: 1rem;
+    align-items: center;
+}
+
+.review-card-header .user-name {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.review-card-header .review-date {
+    font-size: 0.8rem;
+    color: gray;
+}
+
+.review-card-content {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+
+.review-text {
+    grid-area: text;
+}
+
+@media (max-width: 800px) {
+    .product-detail {
+        grid-template-columns: 1fr;
+        width: 90%;
+    }
+
+    .other-products {
+        width: 90%;
+    }
+
+    .reviews-section {
+        width: 90%;
+    }
+
+    .user-avatar {
+        width: 40px;
+        height: 40px;
+        margin: 0.5rem;
+        border-radius: 50%;
+        margin-right: 1rem;
+    }
+
+    .review-input-area {
+        margin-right: 0;
+    }
+}

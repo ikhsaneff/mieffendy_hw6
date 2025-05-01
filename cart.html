@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UA Campus Store | Shopping Cart</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/store.css">
+    <link rel="stylesheet" href="css/cart.css">
+    <link rel="stylesheet" href="css/utility-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+</head>
+
+<body>
+    <nav class="nav-container">
+        <a href="#" class="hamburger-menu">
+            <i class="fas fa-bars"></i>
+        </a>
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="UA Campus Store Logo">
+        </a>
+        <div class="nav-links">
+            <div class="nav-logo">
+                <a href="search.html"><i class="fas fa-search"></i></a>
+                <span class="tooltip">Search Products</span>
+            </div>
+            <div class="nav-logo">
+                <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                <span class="tooltip">Shopping Cart</span>
+            </div>
+            <div class="nav-logo">
+                <a href="#"><i class="fas fa-user"></i></a>
+                <span class="tooltip">Account</span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="cart-section">
+            <h1>Your Shopping Cart</h1>
+            <div class="cart-container">
+                <div class="cart-items">
+                    <!-- Cart items will be loaded here -->
+                    <div class="loading-spinner">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Loading cart items...</p>
+                    </div>
+                </div>
+                <div class="cart-summary">
+                    <h2>Order Summary</h2>
+                    <div class="summary-items">
+                        <div class="summary-row">
+                            <span>Subtotal:</span>
+                            <span id="cart-subtotal">$0.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Shipping:</span>
+                            <span>FREE</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Tax:</span>
+                            <span id="cart-tax">$0.00</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total:</span>
+                            <span id="cart-total">$0.00</span>
+                        </div>
+                    </div>
+                    <button id="checkout-btn" class="checkout-btn">Proceed to Checkout</button>
+                    <button id="continue-shopping-btn" class="continue-btn">Continue Shopping</button>
+                </div>
+            </div>
+        </section>
+        
+        <section class="confirmation-section" style="display: none;">
+            <div class="confirmation-container">
+                <i class="fas fa-check-circle success-icon"></i>
+                <h2>Order #<span id="order-id">12345</span> Completed!</h2>
+                <p>Thank you for your purchase. Your order has been successfully placed.</p>
+                <p>A confirmation email has been sent to your email address.</p>
+                <button id="continue-shopping-after-checkout" class="continue-btn">Continue Shopping</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">Terms of Use</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">About</a>
+            <a href="#">Help Center</a>
+        </div>
+        <div class="footer-copyright">
+            <p>© 2025 The University of Arizona Campus Store. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <div class="dialog-background" id="confirmation-dialog" style="display: none;">
+        <div class="dialog-content">
+            <h2>Are you sure?</h2>
+            <p>Are you sure you want to remove this item from your cart?</p>
+            <div class="dialog-buttons">
+                <button id="confirm-remove-btn" class="danger-btn">Remove</button>
+                <button id="cancel-remove-btn" class="cancel-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/loadDatas.js"></script>
+    <script src="scripts/cart.js"></script>
+</body>
+</html>
